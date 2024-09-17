@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        ul,
+        li,
+        a,
+        .logo {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            color: white;
+
+            text-shadow: 0 0 5px red,
+
+                0 0 10px red,
+                0 0 15px red,
+
+                0 0 20px red,
+                0 0 25px red,
+                0 0 30px red,
+                0 0 35px red;
+
+            animation: neon-flicker 1.5s infinite alternate;
+            font-family: 'Raleway', sans-serif;
+
+            margin-bottom: 20px;
+        }
+
+        @keyframes neon-flicker {
+
+            0%,
+            19%,
+            21%,
+            23%,
+            25%,
+            54%,
+            56%,
+            100% {
+                text-shadow: 0 0 5px red,
+                    0 0 10px red,
+                    0 0 15px rgb(240, 11, 11),
+                    0 0 20px rgb(230, 0, 0),
+                    0 0 25px red,
+                    0 0 30px red,
+                    0 0 35px red;
+            }
+
+            20%,
+            24%,
+            55% {
+                text-shadow: none;
+            }
+
+        }
+
+        body {
+            cursor: none;
+        }
+
+
+        .nav-container {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 192, 203, 0);
+            border-radius: 5px;
+
+            transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+
+        .logo img {
+            width: 30px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-size: 1.2em;
+            color: #fff;
+            font-weight: bold;
+        }
+
+
+
+
+
+        .menu-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-size: 1.5em;
+            transition: transform 0.3s ease-in-out;
+            z-index: 10;
+        }
+
+
+        .nav-menu {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0);
+            border-radius: 5px;
+            opacity: 0;
+            max-height: 0;
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            padding: 0;
+            justify-content: center;
+
+        }
+
+        .nav-menu li {
+            margin: 0 10px;
+
+        }
+
+        .nav-menu a {
+            color: white;
+            font-size: 1em;
+            padding: 10px 15px;
+
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+            border-radius: 5px;
+            display: block;
+
+        }
+
+
+        .nav-menu a:hover {
+            background-color: white;
+            color: white;
+        }
+
+
+        .nav-container.active {
+            width: 100%;
+
+            height: 50px;
+
+        }
+
+        .nav-container.active .logo {
+            opacity: 1;
+            transform: translateY(0);
+            position: absolute;
+            left: 10px;
+
+        }
+
+        .nav-container.active .nav-menu {
+            opacity: 1;
+            max-height: 50px;
+
+        }
+
+
+        @media (max-width: 600px) {
+            .nav-container {
+                width: 100%;
+            }
+
+            .nav-menu a {
+                font-size: 0.9em;
+            }
+        }
+
+        #home,
+        #about,
+        #gallery,
+        #services,
+        #reviews,
+        #shopnow,
+        #contact {
+            height: 800px;
+            text-align: center;
+            background: #f9f9f9;
+            padding: 50px 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+
+        }
+
+        #home {
+            background-size: cover;
+            animation: parallaxSlide 40s infinite alternate ease-in-out;
+        }
+
+        @keyframes parallaxSlide {
+            0% {
+                background-image: url('https://cdn.shopify.com/s/files/1/0579/2233/products/IMG_0399.jpg?v=1565114503');
+                background-position: center top;
+            }
+
+            25% {
+                background-image: url('https://asset.bloomnation.com/c_pad,d_vendor:global:catalog:product:image.png,f_auto,fl_preserve_transparency,q_auto/v1653091887/vendor/7291/catalog/product/2/0/20220520050820_file_6287cb04983a0_6287cb6de6d0d.jpg');
+                background-position: center center;
+            }
+
+            50% {
+                background-image: url('https://i.pinimg.com/originals/79/be/ba/79bebab0fa456f77ff9476d2ebc3904e.jpg');
+                background-position: center bottom;
+            }
+
+            75% {
+                background-image: url('https://i.pinimg.com/originals/2c/2f/9e/2c2f9ed9ea92d8b55aee28c00b9009ff.jpg');
+                background-position: center center;
+            }
+
+            100% {
+                background-image: url('https://cdn.shopify.com/s/files/1/0579/2233/products/IMG_0399.jpg?v=1565114503');
+                background-position: center top;
+            }
+        }
+
+
+        #home h2 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+            align-items: center;
+            border-bottom: 1px solid #333;
+
+
+            font-size: 3em;
+
+            font-weight: bold;
+            animation: slide-in-right 2s ease-out forwards;
+
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            margin-top: 0;
+            margin-bottom: 0;
+            white-space: nowrap;
+
+            background-image: url('https://i.pinimg.com/originals/f1/44/2c/f1442cacd17a2fdf04901851d03b63ad.jpg');
+            background-size: cover;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+
+        @keyframes slide-in-right {
+            0% {
+                transform: translateX(100%);
+
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+
+
+
+
+
+        #home p {
+            font-size: 1.2em;
+            color: #555;
+            margin-top: 0;
+            font-family: 'Arial', sans-serif;
+
+            font-weight: bold;
+            color: #fff;
+
+            opacity: 0;
+
+            animation: slide-in-left 2s ease-out forwards;
+
+            animation-delay: 1s;
+
+            white-space: nowrap;
+
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+
+            margin-bottom: 20px;
+        }
+
+
+        @keyframes slide-in-left {
+            0% {
+                transform: translateX(-100%);
+
+                opacity: 0;
+
+            }
+
+            100% {
+                transform: translateX(0);
+
+                opacity: 1;
+
+            }
+        }
+
+        #gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item p {
+            font-weight: bold;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #333;
+            outline: none;
+        }
+
+        .submit-button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #555;
+        }
+
+
+
+        @media (max-width: 768px) {
+
+            #services,
+            #reviews,
+            #contact {
+                padding: 20px;
+            }
+
+            #services p:first-of-type {
+                font-size: 36px;
+            }
+
+            .review {
+                max-width: 90%;
+            }
+
+            #contact h1 {
+                font-size: 30px;
+            }
+        }
+
+
+        #shopnow {
+            height: 800px;
+            background-color: red;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+
+        .flower-item {
+            background-color: #fff;
+            border: 2px solid black;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 200px;
+            padding: 10px;
+        }
+
+        .flower-item img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid black;
+        }
+
+
+        .flower-item h2 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+
+        .flower-item p {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #007bff;
+        }
+
+
+        .add-to-cart-btn {
+            padding: 10px 15px;
+            background-color: red;
+            color: #fff;
+            border: 2px solid black;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 10px;
+        }
+
+
+        .add-to-cart-btn:hover {
+            background-color: darkred;
+        }
+
+
+        .flower-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+
+        #contact {
+            height: 800px;
+            background-color: aqua;
+            border: 2px solid black;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            background-image: url('https://i.pinimg.com/originals/fe/41/fc/fe41fc82108d46a6532c755cab9d45cd.png');
+            background-size: cover;
+
+            background-position: center;
+
+            background-attachment: fixed;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+
+
+        #contact h1 {
+            text-align: center;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid black;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+
+        .form-group input,
+        .form-group textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+
+        .submit-button {
+            padding: 12px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+
+
+
+        #services {
+            height: 800px;
+            background-color: #333;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            background-image: url('https://swall.teahub.io/photos/small/308-3089909_heart-pink-sparkle-pink-heart-facebook-covers.jpg');
+            background-size: cover;
+
+            background-position: center;
+
+            background-attachment: fixed;
+        }
+
+        #services p:first-of-type {
+            text-align: center;
+            font-size: 50px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        #services b {
+            color: aqua;
+        }
+
+
+        #services div {
+            background-color: white;
+            color: #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+
+        #services strong {
+            display: block;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: left;
+            margin-left: 10px;
+        }
+
+        #footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .footer-logo h2 {
+            color: #fff;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-links h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: aqua;
+        }
+
+        .footer-contact {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-contact h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .footer-contact p {
+            margin: 5px 0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        #about {
+            background-image: url('https://cdn.wallpapersafari.com/3/45/abuHCI.jpg');
+            background-size: cover;
+
+            background-position: center;
+
+            background-attachment: fixed;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        #gallery {
+            background-image: url('https://th.bing.com/th/id/OIP.CLjCMmXdRh1g83-AyPOsrAHaFj?pid=ImgDet&w=474&h=355&rs=1');
+            background-size: cover;
+
+            background-position: center;
+
+            background-attachment: fixed;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav class="nav-container" id="navContainer">
+
+        <div class="logo">
+            <img src="image/pradise - Copy.png" alt="Gallery Logo">
+            <span>FlowerParadise</span>
+        </div>
+
+        <div class="menu-button" id="menuButton">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i>About</a></li>
+            <li><a href="#gallery"><i class="fas fa-images"></i>Gallery</a></li>
+            <li><a href="#services"><i class="fas fa-cogs"></i>Services</a></li>
+            <li><a href="#shopnow"><i class="fas fa-shopping-cart"></i>Shop Now</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
+
+        </ul>
+    </nav>
+
+
+    <div id="home" style="height: 800px;text-align: center; ">
+
+        <h2>Welcome to Our Flower Collection</h2>
+        <p>Discover the vibrant colors and fragrances of our garden.</p>
+
+    </div>
+
+
+
+
+    <div id="about" style="height: 800px; 
+ ">
+
+
+
+
+        <div>
+            <h2 style="
+            color: black; font-size: 44px;">About Us</h2>
+        </div>
+        <div>
+            <p style="text-wrap:pretty;">
+
+            <h1>Welcome to Flower Paradise Shop,</h1> where nature’s beauty meets artistic craftsmanship. Established in
+            2024, our mission is to bring joy and elegance to every occasion with our exquisite floral
+            arrangements and exceptional customer service.
+            At Flower Paradise Shop, we believe that flowers are more than just decorations—they are expressions of
+            love, celebration, and remembrance. Our team of skilled florists is passionate about creating stunning
+            bouquets and arrangements that capture the essence of your special moments.
+
+
+            </p>
+        </div>
+
+    </div>
+    <div id="gallery" style="height: 800px;  flex-direction: row-reverse;">
+
+
+        <div class="gallery-item">
+            <img src="image/page.png" height=300px ,width=30px, alt="Flower 1">
+            <p> Custom Bouquet Creation</p>
+            <p>
+                “Crafting custom bouquets with love and creativity for every occasion. 💐❤️ #CustomBouquets
+                #FlowerParadise”</p>
+
+        </div>
+        <div class="gallery-item">
+            <img src="image/shop.png " height=250px, width=100px alt="Flower 2">
+            <p>Elegant Wedding Arrangement</p>
+            <p> “Creating unforgettable moments with our exquisite wedding floral arrangements. 💍🌹 #WeddingFlowers
+                #FlowerParadise”</p>
+
+        </div>
+        <div class="gallery-item">
+            <img src="image/shop1.png" height=300px, width=300px, alt="Flower 3">
+            <p> Custom Bouquet Creation</p>
+            <p>
+                “Crafting custom bouquets with love and creativity for every occasion. 💐❤️ #CustomBouquets
+                #FlowerParadise”</p>
+
+        </div>
+        <div class="gallery-item">
+            <img src="image/shop3.png" height=300px, width=300px ,alt="Flower 4">
+            <p>Vibrant Floral Display</p>
+            <p>“Step into a world of color and fragrance at Flower Paradise Shop. 🌸✨ #FlowerParadise #BloomingBeauty”
+            </p>
+
+        </div>
+    </div>
+    <div id="services" style="height: 800px; background-color: #333;">
+        <div>
+            <p style="text-align: center; font-size: 50px; color:pink;font-weight: bold;"> Flower <b
+                    style="color:aqua">Paradise</b> Shop Services</p>
+        </div>
+
+        <p>
+            <strong style="color:white; ">Custom Floral Arrangements:</strong>
+
+        <div style="background-color: white;text-align: justify;display: flexbox;">
+            Our expert florists create stunning custom bouquets and arrangements tailored to your preferences. Whether
+            it’s for a special occasion or just to brighten someone’s day, we craft each piece with care and creativity.
+        </div><br>
+        <b style="color: white; ">Event Decorations:</b>
+        <div style="background-color: white;text-align: justify;">
+            Transform any event into a magical experience with our event decoration services. We provide floral
+            decor for corporate events, parties, and celebrations, adding a touch of elegance and beauty to your
+            venue. <br> </div>
+        <b style="color:white;text-wrap: wrap;"> Delivery Services:</b>
+        <div style="background-color: white;text-align: justify;">
+            Conveniently send flowers to your loved ones with our reliable delivery service. We ensure your floral
+            gifts arrive fresh and on time, making every occasion special.</div>
+        </p>
+    </div>
+    <div id="shopnow" style="height: 800px; background-color:red; flex-direction: row-reverse;">
+
+        <div class="flower-item" data-name="Rose" data-price="10">
+            <img src="/image/rose.png" alt="Rose">
+            <h2>Rose</h2>
+            <p>$10</p>
+            <button class="add-to-cart-btn" style="background-color: red; border: 2px solid black">Add to Cart</button>
+        </div>
+        <div class="flower-item" data-name="Tulip" data-price="8">
+            <img src="/image/tulip.png" alt="Tulip">
+            <h2>Tulip</h2>
+            <p>$8</p>
+            <button class="add-to-cart-btn" style=" background-color:red ; border: 2px solid black ">Add to
+                Cart</button>
+        </div>
+        <div class="flower-item" data-name="Lily" data-price="12">
+            <img src="/image/lilyy.png" alt="Lily">
+            <h2>Lily</h2>
+            <p>$12</p>
+            <button class="add-to-cart-btn" style="background-color: red; border: 2px solid black">Add to Cart</button>
+        </div>
+        <div class="flower-item" data-name="Daisy" data-price="9">
+            <img src="/image/daisy.png" alt="Daisy">
+            <h2>Daisy</h2>
+            <p>$9</p>
+            <button class="add-to-cart-btn" style="background-color: red;border:2px solid black">Add to Cart</button>
+        </div>
+
+    </div>
+    <div id="contact" style="height: 800px; background-color: aqua; border: 2px solid black;">
+
+        <h1>Contact Us</h1>
+        <form class="contact-form" style="border: 2px solid black; justify-content: flex-start;">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button class="submit-button">Send Message</button>
+        </form>
+    </div>
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/image/pradise - Copy.png" alt="Flower Paradise Logo">
+                <h2>Flower Paradise Shop</h2>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#shopnow">Shop Now</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: info@flowerparadise.com</p>
+                <p>Phone: +123-456-7890</p>
+                <p>Address: 123 Flower Lane, Blossom City</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Flower Paradise Shop. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuButton = document.getElementById('menuButton');
+        const navContainer = document.getElementById('navContainer');
+
+
+        menuButton.addEventListener('click', () => {
+
+            navContainer.classList.toggle('active');
+
+
+            if (navContainer.classList.contains('active')) {
+
+                menuButton.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+
+                menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        const neonCursor = document.querySelector('.neon-cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            neonCursor.style.left = `${e.clientX}px`;
+            neonCursor.style.top = `${e.clientY}px`;
+        });
+
+
+    </script>
+</body>
+
+</html>
